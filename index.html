@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter Assignment</title>
+
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+        }
+
+        .main-container{
+            width: 50%;
+            height: 50vh;
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: auto;
+            margin-top: 10%;
+            border-radius: 2rem;
+            box-shadow: rgba(230, 230, 230, 0.35) 0px 5px 15px;
+        }
+
+        h1 {
+            background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/6963bbf342d87b3a2150bd8f59682b89.jpg);
+            -webkit-background-clip: text;
+            background-size: contain;
+            width: 100%;
+            text-align: center;
+            color: transparent;
+            font-size: 50px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            padding-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        button{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            margin-left: 1.6%;
+            border: 2px solid #00264d;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        button:hover{
+            cursor: pointer;
+            color: 	rgb(0, 51, 102);
+            background-color: 	rgb(0, 51, 102, 0.3);
+        }
+
+         #instruction{
+            font:bold 25px 'Signika', sans-serif;
+            margin-top: -6%;
+            margin-left: 30%;
+            user-select:none;
+            animation:float 2s ease-in-out infinite; 
+        }
+            
+        @keyframes float {
+             0% ,100%{ transform:none; }
+             33%{ transform:translateY(-1px) rotate(-2deg); }
+             66%{ transform:translateY(1px) rotate(2deg); }
+        }
+        #instruction:hover { animation: slide-in 2s; }
+        @keyframes slide-in {
+        0%,100%{ transform:translate(0); }
+        25%{ transform:rotateX(20deg) translateY(2px) rotate(-3deg); }
+        50%{ transform:translateY(-20px) rotate(3deg) scale(1.1);  }
+        }
+    
+
+        #output{
+            width: 50%;
+            border-radius: 5px;
+            font:bold 30px 'Signika', sans-serif;
+            color: #ffff;
+            text-align: center;
+            margin-left: 20%;
+        }
+        
+
+        #form{
+            margin-left: 50%;
+            margin-top: 10%;
+        }
+
+        #number{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            padding: 10px;
+            border: 2px solid #00264d;
+            border-radius: 10px;
+        }
+
+        #convert{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #00264d;
+            padding: 10px;
+            border: 2px solid #00264d;
+            border-radius: 10px;
+        }
+
+        #convert:hover{
+            cursor: pointer;
+            color: 	#ffff;
+            background-color: 	rgb(0, 51, 102, 0.3);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>WEIGHT CONVERTER</h1>
+
+        <button id="pound">Pounds - Ounces</button>
+        <button id="ounce">Ounces - Pounds</button>
+        <button id="kilogram">Kilograms - Pounds</button>
+        <button id="poundKilo">Pounds - Kilograms</button>
+    </div>
+
+    <p id="instruction"></p>
+
+    <form id="form">
+        <input type="text" id="number">
+        <input type="submit" value="CONVERT" id="convert">
+    </form>
+
+    <p id="output"></p>
+</body>
+
+<script>
+    // VARIABLE DECLARATIONS var, const, let
+    
+    const pound = document.getElementById("pound");
+    const ounce = document.getElementById("ounce");
+    const kilgram = document.getElementById("kilogram");
+    const poundKilo = document.getElementById("poundKilo");
+    const instruction = document.getElementById("instruction");
+    const form = document.getElementById("form");
+    const convert = document.getElementById("convert");
+    const output = document.getElementById("output");
+
+    let convertType;
+
+    // This is the instruction section
+
+    pound.onclick = function(){
+        convertType = "pound";
+        instruction.innerHTML = "Enter the value of pound(s)";
+    }
+
+    ounce.onclick = function(){
+        convertType = "ounce";
+        instruction.innerHTML = "Enter the value of ounce(s)";
+    }
+
+    kilogram.addEventListener('click', function(){
+        convertType = "kilogram";
+        instruction.innerHTML = "Enter the value of Kilogram(s)";
+    })
+
+    poundKilo.onclick = function(){
+        convertType = "poundKilo";
+        instruction.innerHTML = "Enter the value of pound(s)";
+    }
+
+    // Form Submit
+    form.onsubmit = function(event){
+        event.preventDefault();
+
+        var number = document.getElementById("number").value;
+
+        if (number) {
+            if (convertType == "pound"){
+                var result = (number * 16);
+                output.innerHTML = `${number} pound(s) = ${result} ounce(s)`;
+            }
+            else if (convertType == "ounce"){
+                var result = (number * 0.0625).toFixed(2);
+                output.innerHTML = `${number} ounce(s) = ${result} pound(s)`;
+            }
+
+            else if (convertType == "kilogram"){
+                var result = (number * 2.205).toFixed(2);
+                output.innerHTML = `${number} kilogram(s) = ${result} Pound(s)`;
+            }
+
+            else if (convertType == "poundKilo"){
+                var result = (number * 0.454).toFixed(2);
+                output.innerHTML = `${number} pound(s) = ${result} kilogram(s)`;
+            }
+        }
+
+        else {
+            output.innerHTML = "Please enter a value"
+        }
+
+    }
+</script>
+</html>
