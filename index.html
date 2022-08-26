@@ -53,6 +53,7 @@
 
          #instruction{
             font:bold 25px 'Signika', sans-serif;
+            color: rgb(0, 51, 109);
             margin-top: -6%;
             margin-left: 30%;
             user-select:none;
@@ -109,6 +110,71 @@
             cursor: pointer;
             color: 	#ffff;
             background-color: 	rgb(0, 51, 102, 0.3);
+        }
+
+
+        /* Media Querry (Mobile Screen) */
+
+        @media only screen and (max-width: 1000px) {
+            body{
+                height: auto;
+            }
+
+            .main-container{
+                height: 60vh;
+            }
+
+            .main-container h1{
+            width: 100%;
+            text-align: center;
+            color: transparent;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding-top: 40px;
+            padding-bottom: 20px;
+            }
+
+            .main-container button {
+            font-size: 14px;
+            border: 2px solid #00264d;
+            border-radius: 8px;
+            padding: 8px;
+            margin-left: 12%;
+            margin-bottom: 10%;
+            display: block;
+            }
+
+            .main-container #pound, .main-container #ounce{
+                width: 75%;
+            }
+
+            .main-container button:hover{
+            cursor: pointer;
+            color: 	rgb(0, 51, 109);
+            background-color: 	rgba(47, 129, 211, 0.5);
+            }
+
+            #instruction{
+            font-size: 12px;
+            color: rgb(0, 51, 109);
+            margin-top: -10%;
+            margin-left: 29%;
+            }
+
+            #form{
+            margin-left: 5%;
+            margin-top: 20% 
+            }
+
+            #output{
+            width: 70%;
+            border-radius: 5px;
+            font:bold 18px 'Signika', sans-serif;
+            color: #ffff;
+            text-align: center;
+            margin-left: 10%;
+            }
         }
 
     </style>
